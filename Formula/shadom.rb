@@ -1,40 +1,18 @@
 class Shadom < Formula
   desc "Agent-first browser automation CLI"
-  homepage "https://github.com/dred0n/shadom"
-  url "https://github.com/dred0n/shadom.git",
-      tag:      "v0.1.1",
-      revision: "c55eaba4d411880fe3f421366c5dd4b8771759a9"
+  homepage "https://github.com/dred0n/shadom-releases"
+  version "0.1.1"
   license "MIT"
 
-  depends_on "rust" => :build
+  on_macos do
+    on_arm do
+      url "https://github.com/dred0n/shadom-releases/releases/download/v0.1.1/shadom-macos-aarch64.tar.gz"
+      sha256 "32231a1a1f6103eb2f0f0bb4915f78e2d9fb91a06d468363218004c697e8d62a"
 
-  def install
-    system "cargo", "install", "--locked", "--path", ".", "--root", prefix
-  end
-
-  def caveats
-    <<~EOS
-      Quick start for agents:
-        shadom doctor
-
-        cat > /tmp/shadom-quickstart.rhai <<'RHAI'
-        let j = journey("brew_quickstart");
-        j.open_page("alice_desktop", "p");
-        j.navigate("p", "https://example.com");
-        j.wait_visible("p", "loaded", "body", 5000);
-        j.assert_title("p", "title_ok", "Example Domain");
-        run_journey(j);
-        RHAI
-
-        shadom lint /tmp/shadom-quickstart.rhai
-        shadom run /tmp/shadom-quickstart.rhai \
-          --report /tmp/shadom-report.json \
-          --trace /tmp/shadom-trace \
-          --json-diagnostics
-
-      For repair/debugging, inspect the JSON report plus /tmp/shadom-trace/index.html,
-      DOM snapshots, screenshots, console logs, and HAR artifacts.
-    EOS
+      def install
+        bin.install "shadom-macos-aarch64" => "shadom"
+      end
+    end
   end
 
   test do
