@@ -14,6 +14,6 @@ class Shadom < Formula
 
   test do
     assert_match "agent-first browser automation CLI", shell_output("#{bin}/shadom --help")
-    assert_predicate bin/"stealth", :exist?
+    assert_path_exists bin/"stealth"
   end
 end
