@@ -1,13 +1,13 @@
 class Shadom < Formula
   desc "Agent-first browser automation CLI"
   homepage "https://github.com/dred0n/shadom-releases"
-  version "0.1.3"
+  version "0.1.4"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/dred0n/shadom-releases/releases/download/v0.1.3/shadom-macos-aarch64-v0.1.3.tar.gz"
-      sha256 "14c08352dcaadbe8a33c563240b8107ec4037e0199424ffafc27dc620e13e1f6"
+      url "https://github.com/dred0n/shadom-releases/releases/download/v0.1.4/shadom-macos-aarch64-v0.1.4.tar.gz"
+      sha256 "9d48c24bd71f65cfb3224fe1674521781067e9604943a07a963760bcdd8b2da6"
     end
   end
 
